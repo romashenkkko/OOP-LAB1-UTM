@@ -8,45 +8,41 @@
         public String Model { get; set; } = string.Empty;
 
 
-        public void CompareSize(Display m)
+        private void Compare(Display m, Func<Display, double> getValue, string quality)
         {
-            
-            if (Specification.CalculateDiagonal(m.Width, m.Height) > Specification.CalculateDiagonal(this.Width, this.Height))
+            double thisValue = getValue(this);
+            double otherValue = getValue(m);
+
+            if (thisValue > otherValue)
             {
-                Console.WriteLine($"Monitor {this.Model} is bigger than {m.Model}");
+                Console.WriteLine($"Monitor {this.Model} is {quality} than Monitor {m.Model}");
             }
-           else if (Specification.CalculateDiagonal(m.Width, m.Height) == Specification.CalculateDiagonal(this.Width, this.Height))
+            else if (thisValue < otherValue)
             {
-                Console.WriteLine($"Monitor {this.Model} equal in size with monitor {m.Model}");
+                Console.WriteLine($"Monitor {m.Model} is {quality} than Monitor {this.Model}");
             }
             else
             {
-                Console.WriteLine($"Monitor {m.Model} is bigger in size than {this.Model}");
+                Console.WriteLine($"Monitor {this.Model} and Monitor {m.Model} have the same {quality}");
             }
+        }
+
+        public void CompareSize(Display m)
+        {
+            Compare(m, d => Specification.CalculateDiagonal(d.Width, d.Height), "bigger");
         }
 
         public void CompareSharpness(Display m)
         {
-            if (this.Ppi > m.Ppi)
-            {
-                Console.WriteLine($"Monitor {this.Model} is sharper than Monitor {m.Model}");
-            }
-            else if (this.Ppi < m.Ppi)
-            {
-                Console.WriteLine($"Monitor {m.Model} is sharper than Monitor {this.Model}");
-            }
-            else
-            {
-                Console.WriteLine($"Monitor {this.Model} and Monitor {m.Model} have the same sharpness");
-            }
+            Compare(m, d => d.Ppi, "sharper");
         }
+
         public void CompareWithMonitor(Display m)
         {
             CompareSize(m);
             CompareSharpness(m);
         }
-
     }
-
-
 }
+
+
