@@ -6,6 +6,25 @@ namespace OOP_LAB1_UTM
     {
         static void Main(string[] args)
         {
+
+            string filePath = args[0];
+            string content = FileReader.ReadFileToString(filePath);
+
+            if (content == null)
+            {
+                Console.WriteLine("Failed to load file.");
+                return;
+            }
+
+            TextData textData = new TextData(content, filePath);
+            Console.WriteLine($"Name: {Path.GetFileName(textData.FileName)}");
+            Console.WriteLine($"Text: {textData.Text}");
+            Console.WriteLine($"Number of vowels: {textData.NumberOfVowels}");
+            Console.WriteLine($"Number of consonants: {textData.NumberOfConsonants}");
+            Console.WriteLine($"Number of letters: {textData.NumberOfLetters}");
+            Console.WriteLine($"Number of sentences: {textData.NumberOfSentences}");
+            Console.WriteLine($"Longest word: {textData.LongestWord}");
+
             Display display1 = new Display()
             {
                 Width = 45,
