@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace OOP_LAB1_UTM.Core
 {
     public static class Specification

@@ -6,9 +6,9 @@
         {
             return File.ReadAllText(path);
         }
-        catch (System.Exception e)
+        catch (Exception e)
         {
-            System.Console.WriteLine($"Error reading the file: {e.Message}");
+            Console.WriteLine($"Error reading the file: {e.Message}");
             return null;
         }
     }

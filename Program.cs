@@ -1,5 +1,4 @@
 ﻿using OOP_LAB1_UTM.Core;
-using System.Reflection;
 
 namespace OOP_LAB1_UTM
 {
@@ -19,7 +18,6 @@ namespace OOP_LAB1_UTM
             {
                 string content = FileReader.ReadFileToString(filePath);
 
-
                 TextData textData = new TextData(content, filePath);
                 Console.WriteLine($"Name: {Path.GetFileName(textData.FileName)}");
                 Console.WriteLine($"Text: {textData.Text}");
@@ -29,10 +27,7 @@ namespace OOP_LAB1_UTM
                 Console.WriteLine($"Number of sentences: {textData.NumberOfSentences}");
                 Console.WriteLine($"Longest word: {textData.LongestWord}");
             }
-            
-
-            
-
+  
             Display display1 = new Display()
             {
                 Width = 45,
@@ -62,10 +57,13 @@ namespace OOP_LAB1_UTM
             assistant1.AssignDisplay(display1);
             assistant1.AssignDisplay(display2);
             assistant1.AssignDisplay(display3);
+
             Console.WriteLine("Compare monitors using assistant1 Helper 1:");
             assistant1.Assist();
+
             Console.WriteLine("What monitors remains in stock?");
             assistant1.BuyDisplay(display1);
+
             foreach (var display in assistant1.AssignedDisplay)
             {
                 Console.WriteLine(display);

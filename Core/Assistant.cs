@@ -6,15 +6,9 @@
         public List<Display> AssignedDisplay { get; set; } = new List<Display>();
 
         public void AssignDisplay(Display d)
-        {
-            if (!AssignedDisplay.Contains(d))  
-            {
+        {  
                 AssignedDisplay.Add(d);
-            }
-            else
-            {
-                Console.WriteLine("You already have elements in list, clear them");
-            }
+
         }
 
         public void ClearDisplays()
