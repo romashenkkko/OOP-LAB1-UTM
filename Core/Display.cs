@@ -7,7 +7,10 @@
         public float Ppi { get; set; }
         public String Model { get; set; } = string.Empty;
 
-
+        public override string ToString()
+        {
+            return $"Model: {Model}, Width: {Width}, Height: {Height}, PPI: {Ppi}";
+        }
         private void Compare(Display m, Func<Display, double> getValue, string quality)
         {
             double thisValue = getValue(this);
@@ -42,6 +45,8 @@
             CompareSize(m);
             CompareSharpness(m);
         }
+
+     
     }
 }
 

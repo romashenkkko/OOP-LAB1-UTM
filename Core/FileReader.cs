@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-public static class FileReader
+﻿public static class FileReader
 {
     public static string ReadFileToString(string path)
     {
