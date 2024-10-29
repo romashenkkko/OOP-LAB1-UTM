@@ -8,23 +8,30 @@ namespace OOP_LAB1_UTM
         static void Main(string[] args)
         {
 
-            string filePath = args[0];
-            string content = FileReader.ReadFileToString(filePath);
-
-            if (content == null)
+            if (args.Length == 0)
             {
-                Console.WriteLine("Failed to load file.");
+                Console.WriteLine("Please provide file paths as arguments.");
                 return;
             }
 
-            TextData textData = new TextData(content, filePath);
-            Console.WriteLine($"Name: {Path.GetFileName(textData.FileName)}");
-            Console.WriteLine($"Text: {textData.Text}");
-            Console.WriteLine($"Number of vowels: {textData.NumberOfVowels}");
-            Console.WriteLine($"Number of consonants: {textData.NumberOfConsonants}");
-            Console.WriteLine($"Number of letters: {textData.NumberOfLetters}");
-            Console.WriteLine($"Number of sentences: {textData.NumberOfSentences}");
-            Console.WriteLine($"Longest word: {textData.LongestWord}");
+
+            foreach (string filePath in args)
+            {
+                string content = FileReader.ReadFileToString(filePath);
+
+
+                TextData textData = new TextData(content, filePath);
+                Console.WriteLine($"Name: {Path.GetFileName(textData.FileName)}");
+                Console.WriteLine($"Text: {textData.Text}");
+                Console.WriteLine($"Number of vowels: {textData.NumberOfVowels}");
+                Console.WriteLine($"Number of consonants: {textData.NumberOfConsonants}");
+                Console.WriteLine($"Number of letters: {textData.NumberOfLetters}");
+                Console.WriteLine($"Number of sentences: {textData.NumberOfSentences}");
+                Console.WriteLine($"Longest word: {textData.LongestWord}");
+            }
+            
+
+            
 
             Display display1 = new Display()
             {
@@ -65,21 +72,21 @@ namespace OOP_LAB1_UTM
             }
 
 
-            //Console.WriteLine("This are the comparisons by methoods");
+            Console.WriteLine("This are the comparisons by methoods");
             //comparing by size
-            //display1.CompareSize(display2);
-            //display2.CompareSize(display3);
-            //display3.CompareSize(display1);
+            display1.CompareSize(display2);
+            display2.CompareSize(display3);
+            display3.CompareSize(display1);
 
-            ////comparing by sharpness
-            //display1.CompareSharpness(display2);
-            //display2.CompareSharpness(display3);
-            //display3.CompareSharpness(display1);
+            //comparing by sharpness
+            display1.CompareSharpness(display2);
+            display2.CompareSharpness(display3);
+            display3.CompareSharpness(display1);
 
-            ////compare by both criterias
-            //display1.CompareWithMonitor(display2);
-            //display3.CompareWithMonitor(display2);
-            //display2.CompareWithMonitor(display1);
+            //compare by both criterias
+            display1.CompareWithMonitor(display2);
+            display3.CompareWithMonitor(display2);
+            display2.CompareWithMonitor(display1);
         }
     }
 }

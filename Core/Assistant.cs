@@ -2,7 +2,7 @@
 {
     public class Assistant
     {
-        public string AssistantName { get; set; }
+        public string AssistantName { get; set; } = string.Empty;
         public List<Display> AssignedDisplay { get; set; } = new List<Display>();
 
         public void AssignDisplay(Display d)
@@ -16,7 +16,6 @@
                 Console.WriteLine("You already have elements in list, clear them");
             }
         }
-
 
         public void ClearDisplays()
         {
@@ -35,7 +34,6 @@
                 }
             }
         }
-
         public Display BuyDisplay(Display d)
         {
             AssignedDisplay.Remove(d);
